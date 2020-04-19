@@ -22,8 +22,9 @@
 	height: 49px;
 	position: absolute;
 	bottom: 0px;
+	font-size: 14px;
 	align-items: center;
 	justify-content: center;
-	color: #C8C7CC;
+	color: #000000;
 }
 </style>

@@ -1,28 +1,107 @@
 <template>
-	<view class="content bgcf">
+	<view class="">
 		<my-header :cheackeds="0"></my-header>
-		<view class="bodys">
-			<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
-				<swiper-item>
-					<view class="swiper-item">1</view>
-				</swiper-item>
-				<swiper-item>
-					<view class="swiper-item">2</view>
-				</swiper-item>
-				<swiper-item>
-					<view class="swiper-item">3</view>
-				</swiper-item>
-			</swiper>
+		<view class="contents bgcf">
+
+			<view class="bodys">
+				<view class="banners flex">
+					<view class="banner">
+						<swiper :indicator-dots="false" :autoplay="true" :interval="3000" :duration="1000">
+							<swiper-item>
+								<view class="swiper-item">
+									<image src="../../static/img/banner1.jpg" mode="aspectFit"></image>
+								</view>
+							</swiper-item>
+							<swiper-item>
+								<view class="swiper-item">
+									<image src="../../static/img/banner2.jpg" mode="aspectFit"></image>
+								</view>
+							</swiper-item>
+							<swiper-item>
+								<view class="swiper-item">
+									<image src="../../static/img/banner3.jpg" mode="aspectFit">
+								</view>
+							</swiper-item>
+						</swiper>
+					</view>
+					<view class="tell">
+						<text>中国人民武装警察部队，成立于1983年4月5日，前身是中国人民公安中央纵队，始建于1949年8月。中国人民武装警察部队是担负国家赋予的国家内部安全保卫任务的部队。
+							自2018年1月1日零时起，中国人民武装警察部队由党中央、中央军委集中统一领导，实行中央军委－武警部队－部队领导指挥体制。武警部队职能属性不变，不列入解放军序列。
+							按照军是军、警是警、民是民原则，将列武警部队序列、国务院部门领导管理的现役力量全部退出武警。将国家海洋局领导管理的海警队伍转隶武警部队，将武警部队担负民事属性任务的黄金、森林、水电部队整体移交国家相关职能部门并改编为非现役专业队伍，同时撤收武警部队海关执勤兵力，彻底理顺武警部队领导管理和指挥使用关系。</text>
+					</view>
+				</view>
+
+
+
+
+
+				<view class="content flex">
+					<view class="items">
+						<view class="itemTitle">
+							项目经验
+						</view>
+						<view class="item flex">
+
+							<text>item电子系统(后台系统)</text>
+							<text>油e购(app)</text>
+							<text>年度考核测评(h5)</text>
+							<text>小鲸鱼公众号</text>
+							<text>文章助手(公众号)</text>
+						</view>
+					</view>
+
+					<!-- recommend start -->
+					<view class="recommends">
+						<view class="recommendTitle">
+							推荐
+						</view>
+						<view class="recommend flex">
+
+							<text>新闻博客什么什么什么没事没事没事吗</text>
+							<text>新闻博客什么什么什么没事没事没事吗</text>
+							<text>新闻博客什么什么什么没事没事没事吗</text>
+							<text>新闻博客什么什么什么没事没事没事吗</text>
+							<text>新闻博客什么什么什么没事没事没事吗</text>
+						</view>
+					</view>
+
+					<!-- recommend end -->
+					<view class="userinfos">
+						<view class="userinfoTitle">
+							个人信息
+						</view>
+						<view class="userinfo flex">
+							<text>姓名：皮宇轩</text>
+							<text>职业：web前端开发</text>
+							<text>籍贯：湖南</text>
+							<text>email:1035576231@qq.com</text>
+							<text>爱好:运动相关的所有活动、打游戏</text>
+						</view>
+					</view>
+
+				</view>
+
+				<view class="history">
+					<view class="life">
+
+					</view>
+					<view class="hobby">
+
+					</view>
+				</view>
+			</view>
+
 		</view>
 		<my-foot></my-foot>
 	</view>
+
 </template>
 
 <script>
 	import myHeader from '../../components/myHeader.vue'
 	import myFoot from '../../components/myFoot.vue'
 	export default {
-		components:{
+		components: {
 			myHeader,
 			myFoot
 		},
@@ -33,11 +112,11 @@
 		},
 		onLoad() {
 			uniCloud.callFunction({
-			    name: 'poyfx',
-			  })
-			  .then(res => {
-				  console.log(res)
-			  });
+					name: 'poyfx',
+				})
+				.then(res => {
+					console.log(res)
+				});
 		},
 		methods: {
 
@@ -47,10 +126,101 @@
 
 <style lang="scss">
 	@media screen and(min-width : 750px) {
-		.content{
+		.contents {
 			font-size: 16px;
-			
+
+			.bodys {
+				width: 100%;
+
+				.banners {
+					border-bottom: 1px solid #333;
+
+					.banner {
+						border-right: 1px solid #333;
+						width: 45%;
+						padding: 3px 2px 0 2px;
+
+						swiper {
+							min-height: 250px;
+
+							image {
+								width: 100%;
+							}
+						}
+					}
+
+					.tell {
+						width: 45%;
+						margin: 0 10px 0 15px;
+						padding: 2px 0;
+
+						text {
+							font-size: 12px;
+						}
+					}
+				}
+
+
+				.content {
+					width: 100%;
+					margin-top: 15px;
+					padding: 10px;
+
+					.items {
+						width: 25%;
+
+						.item {
+
+							flex-direction: column;
+							margin-right: 5px;
+							padding: 15px;
+							font-size: 14px;
+
+							.itemTitle {
+								font-size: 18px;
+							}
+						}
+					}
+
+					.recommends {
+						width: 35%;
+
+						.recommend {
+
+							margin-right: 5px;
+							padding: 15px;
+							font-size: 14px;
+							color: #333333;
+							flex-direction: column;
+
+							text {
+								margin-bottom: 3px;
+								overflow: hidden;
+								white-space: nowrap;
+								text-overflow: ellipsis;
+							}
+						}
+					}
+
+					.userinfos {
+						width: 20%;
+
+						.userinfo {
+
+							margin-right: 5px;
+							padding: 15px;
+							font-size: 14px;
+							flex-direction: column;
+
+							text {
+								margin-bottom: 3px;
+							}
+						}
+					}
+
+				}
+			}
+
 		}
 	}
-	
 </style>

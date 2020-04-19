@@ -61,12 +61,13 @@
 .headers{
 	width: 100%;
 	height: 49px;
-	background-color: #F0E7E6;
+	background-color: #163047;
 	justify-content: center;
 
 	.list{
 		width: 64px;
 		align-self: center;
+		color: #FFFFFF;
 	}
 	.active{
 		color: #DD524D;
