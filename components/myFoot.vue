@@ -20,7 +20,7 @@
 .foots{
 	width: 100%;
 	height: 49px;
-	position: absolute;
+	position: fixed;
 	bottom: 0px;
 	font-size: 14px;
 	align-items: center;

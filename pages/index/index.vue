@@ -1,25 +1,26 @@
 <template>
-	<view class="">
+	<view class="" style="padding-bottom: 49px;">
 		<my-header :cheackeds="0"></my-header>
 		<view class="contents bgcf">
 
 			<view class="bodys">
+				<!-- 听党话 跟党走 -->
 				<view class="banners flex">
 					<view class="banner">
 						<swiper :indicator-dots="false" :autoplay="true" :interval="3000" :duration="1000">
 							<swiper-item>
 								<view class="swiper-item">
-									<image src="../../static/img/banner1.jpg" mode="aspectFit"></image>
+									<image src="../../static/img/1.jpg" mode=""></image>
 								</view>
 							</swiper-item>
 							<swiper-item>
 								<view class="swiper-item">
-									<image src="../../static/img/banner2.jpg" mode="aspectFit"></image>
+									<image src="../../static/img/banner2.jpg" mode=""></image>
 								</view>
 							</swiper-item>
 							<swiper-item>
 								<view class="swiper-item">
-									<image src="../../static/img/banner3.jpg" mode="aspectFit">
+									<image src="../../static/img/banner3.jpg" mode="">
 								</view>
 							</swiper-item>
 						</swiper>
@@ -34,7 +35,7 @@
 
 
 
-
+				<!-- 我的履历 -->
 				<view class="content flex">
 					<view class="items">
 						<view class="itemTitle">
@@ -81,17 +82,26 @@
 
 				</view>
 
-				<view class="history">
-					<view class="life">
-
+				<!-- 我的生活 -->
+				<view class="history flex">
+					
+					<view class="hobby flex">
+							<text>2014.9至2016.9</text>
+							<text>2017.5至 至今</text>
+							<text>2019.3 至 至今</text>
+							<text>2020.1.20至2020.3.10</text>
 					</view>
-					<view class="hobby">
-
+					<view class="life">
+						<uni-calendar></uni-calendar>
 					</view>
 				</view>
 			</view>
 
 		</view>
+
+
+
+		<!-- 底部 -->
 		<my-foot></my-foot>
 	</view>
 
@@ -100,10 +110,12 @@
 <script>
 	import myHeader from '../../components/myHeader.vue'
 	import myFoot from '../../components/myFoot.vue'
+	import uniCalendar from '@/components/c-calendar/c-calendar.vue'
 	export default {
 		components: {
 			myHeader,
-			myFoot
+			myFoot,
+			uniCalendar
 		},
 		data() {
 			return {
@@ -111,34 +123,30 @@
 			}
 		},
 		onLoad() {
-			uniCloud.callFunction({
-					name: 'poyfx',
-				})
-				.then(res => {
-					console.log(res)
-				});
+
 		},
 		methods: {
 
-		}
+		},
+
 	}
 </script>
 
 <style lang="scss">
 	@media screen and(min-width : 750px) {
 		.contents {
-			font-size: 16px;
+			background-color: $text-content-bg;
 
 			.bodys {
 				width: 100%;
 
 				.banners {
-					border-bottom: 1px solid #333;
 
 					.banner {
-						border-right: 1px solid #333;
-						width: 45%;
-						padding: 3px 2px 0 2px;
+
+						width: 60%;
+
+						padding: 1px 0 0 1px;
 
 						swiper {
 							min-height: 250px;
@@ -204,6 +212,7 @@
 
 					.userinfos {
 						width: 20%;
+						flex-grow: 1;
 
 						.userinfo {
 
@@ -219,8 +228,28 @@
 					}
 
 				}
+
+				.history {
+					width: 100%;
+					min-height: 300px;
+
+					.life {
+						width: 30%;
+						margin:0 15px;
+					}
+
+					.hobby {
+						width: 60%;
+						flex-direction: column;
+
+						text {
+							margin-bottom: 8px;
+						}
+					}
+				}
 			}
 
 		}
+
 	}
 </style>

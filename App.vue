@@ -14,4 +14,8 @@
 
 <style>
 	/*每个页面公共css */
+	.input-placeholder { /* WebKit browsers 适配谷歌 */
+	    color: #BDCADA;
+	}
+	
 </style>

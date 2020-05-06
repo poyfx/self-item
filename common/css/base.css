@@ -5,7 +5,7 @@ body {
 	font-size: 14px;
 	font-family: '微软雅黑';
 	/* max-width: 1000px; */
-	background-color: rgba(22,48,71,1);
+	background-color: #f1eded;
 }
 
 html,
@@ -16,6 +16,7 @@ text {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
+	letter-spacing:1px;
 }
 
 .bgcf {
