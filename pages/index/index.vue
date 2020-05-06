@@ -123,7 +123,27 @@
 			}
 		},
 		onLoad() {
+<<<<<<< HEAD
 
+=======
+			// uniCloud.callFunction({
+			// 		name: 'poyfx',
+			// 		data:{a:1}
+			// 	})
+			// 	.then(res => {
+			// 		console.log(res)
+			// 	});
+			uniCloud.callFunction({
+			    name: 'poyfx',
+			    data: { a: 1 },
+			    success:res=>{
+					console.log(res)
+				},
+			    fail(){},
+			    complete(){}
+			});
+			
+>>>>>>> 8a026463db58729d912caeaf1e426031101ce427
 		},
 		methods: {
 
