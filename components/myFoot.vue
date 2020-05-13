@@ -22,6 +22,7 @@
 	height: 49px;
 	position: fixed;
 	bottom: 0px;
+	left: 0;
 	font-size: 14px;
 	align-items: center;
 	justify-content: center;
