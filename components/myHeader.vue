@@ -16,6 +16,11 @@
 				</view>
 			</view>
 			<view class="right flex">
+				<view class="login">
+					<text>登录</text>
+					<text>|</text>
+					<text>注册</text>
+				</view>
 				<input type="text" value="" placeholder="请输入内容" />
 			</view>
 		</view>
@@ -83,7 +88,16 @@
 			}
 			.right{
 				align-items: center;
+				justify-content: flex-end;
 				position: relative;
+				.login{
+					font-size: 14px;
+					color: #fff;
+					margin-right: 15px;
+					text{
+						margin: 0 5px;
+					}
+				}
 				input{
 					border: 1px solid #fff;
 					padding:  4px 30px 4px 4px;

@@ -10,23 +10,36 @@
 				<view class="list" v-for="item in comment" :key="item.id">
 					<view class="list_box flex">
 						<view class="list_left flex">
-							<text class="list_title">
-								{{item.title}}
-							</text>
+							<view class="list_title">
+							<text>{{item.title}} </text>
+							<text>{{  new Date(+new Date(new Date(item.create_time).toJSON()) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '') }}</text>
+							
+							</view>
 							<view class="list_content">
-								<text>{{item.content}}</text>
+								<text>{{item.content}} </text>
 							</view>
 						</view>
 						<view class="list_right flex">
-							<image src="../../static/img/good.png" mode="aspectFit"></image>
+							<view class="flex">
+									<image src="../../static/img/good.png" mode="aspectFit"></image>
+									({{item.like_count}})
+							</view>
+						<view class="flex">
 							<image src="../../static/img/message.png" mode="aspectFit"></image>
+							（{{item.comment_count}}）
+						</view>
+							
 						</view>
 					</view>
-					<view class="comment_other" v-show="false">
+					<view class="comment_other" v-show="true">
 						
 					</view>
 				</view>
-				
+				<view class="pages flex">
+					<text>上一页</text>
+					<text class="active" v-for="(i,index) in pages" :key="index">{{index}}</text>
+					<text>下一页</text>
+				</view>
 				
 			</view>
 		</view>
@@ -45,8 +58,10 @@
 		},
 		data() {
 			return {
+				prepage:2,//每页数量
 				comment:'',//评论
-				count:'',//数量
+				count:'',//总数量
+				pages:'',//分页
 			}
 		},
 		onLoad() {
@@ -55,7 +70,8 @@
 					console.log(res)
 					if(res.data.code == 0 && res.statusCode == 200){
 						this.comment = res.data.data;
-						this.count = res.data.count;
+						this.count = res.data.count
+						this.pages = Math.ceil( this.count/this.prepage);
 						console.log(this.comment)
 					}
 					
@@ -102,6 +118,7 @@
 				.comments_list{
 					padding: 15px 20px;
 					.list{
+						margin-bottom: 20px;
 						padding: 10px;
 						border-bottom: 1px solid #b5b5b5;
 						.list_box{
@@ -111,27 +128,60 @@
 								flex: 1;
 								flex-direction: column;
 								.list_title{
-									font-size: 20px;
-									font-weight: bold;
+								
 									margin-bottom: 8px;
+									text{
+										font-size: 12px;
+										color: #b5b5b5;
+										
+									}
+									& text:nth-child(1){
+										font-size: 20px;
+										font-weight: bold;
+										color: #000;
+										margin-right: 10px;
+									}
 								}
 								.list_content{
 									font-size: 14px;
 									color: #666;
+									padding-left: 15px;
+									margin-bottom: 20px;
 								}
 							}
 							.list_right{
 								align-items: center;
 								justify-content: flex-end;
-								image{
-									width: 12upx;
-									height: 24upx;
-									margin: 0 10px;
+								view{
+									align-items: center;
+									image{
+										width: 12upx;
+										height: 24upx;
+									
+									}
+										margin: 0 10px;
 								}
+								
 							}
 						}
 						
 					
+					}
+					.pages{
+						justify-content: center;
+						align-items: center;
+						
+						text{
+							margin: 0 5px;
+							font-size: 14px;
+							color: #b5b5b5;
+						}
+						text:hover{
+							color: #000;
+						}
+						.active{
+							color: #007AFF;
+						}
 					}
 				}
 				.comment_other{
@@ -141,6 +191,7 @@
 					height: 50px;
 					
 				}
+				
 			}
 		}
 	}
