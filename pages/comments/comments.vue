@@ -1,6 +1,6 @@
 <template>
 	<view class="content bgcf">
-		<my-header :cheackeds="3"></my-header>
+		<my-header :cheackeds="3" ></my-header>
 		<view class="bodys">
 			<view class="comment">
 				<textarea  placeholder="请说点想说的吧" />
@@ -36,9 +36,9 @@
 					</view>
 				</view>
 				<view class="pages flex">
-					<text>上一页</text>
-					<text class="active" v-for="(i,index) in pages" :key="index">{{index}}</text>
-					<text>下一页</text>
+					<text @click="change(page-1)">上一页</text>
+					<text :class="page == i ?'active':''" v-for="(i,index) in pages" :key="index" @click="change(i)">{{i}}</text>
+					<text @click="change(page+1)">下一页</text>
 				</view>
 				
 			</view>
@@ -58,35 +58,50 @@
 		},
 		data() {
 			return {
-				prepage:2,//每页数量
+				page:1,
+				prepage:3,//每页数量
 				comment:'',//评论
 				count:'',//总数量
-				pages:'',//分页
+				pages:1,//分页
 			}
 		},
 		onLoad() {
-			commentServer.commentInfo({
-				success:res => {
-					console.log(res)
-					if(res.data.code == 0 && res.statusCode == 200){
-						this.comment = res.data.data;
-						this.count = res.data.count
-						this.pages = Math.ceil( this.count/this.prepage);
-						console.log(this.comment)
-					}
-					
-				},
-				fali: err =>{
-					console.log(err)
-				},
-				complete:res => {
-					console.log(res)
-				}
-			})
+			this.getInfo()
 			
 		},
 		methods: {
-
+			getInfo(){
+				commentServer.commentInfo({
+					page:this.page,
+					prepage:this.prepage,
+					success:res => {
+						console.log(res)
+						if(res.data.code == 0 && res.statusCode == 200){
+							this.comment = res.data.data;
+							this.count = res.data.count
+							this.pages = Math.ceil( this.count/this.prepage);
+							console.log(this.comment)
+						}
+						
+					},
+					fali: err =>{
+						console.log(err)
+					},
+					complete:res => {
+						console.log(res)
+					}
+				})
+			},
+			change(i){
+				if(i > this.pages || i<= 0) return;
+				this.page = i || this.page;
+				this.page = Math.max(1,this.page);
+				this.page = Math.min(this.pages,this.page);
+				
+				
+				this.getInfo()
+			},
+		
 		}
 	}
 </script>
@@ -96,6 +111,7 @@
 		.content{
 			font-size: 16px;
 			min-height: 650px;
+			margin-bottom: 49px;
 			.bodys{
 				.comment{
 					padding: 5px;
@@ -180,7 +196,9 @@
 							color: #000;
 						}
 						.active{
-							color: #007AFF;
+							color: #FFF;
+							background-color: #007AFF;
+							padding: 2px 4px;
 						}
 					}
 				}
