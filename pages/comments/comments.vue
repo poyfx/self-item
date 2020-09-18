@@ -5,6 +5,7 @@
 			<view class="comment">
 				<textarea  placeholder="请说点想说的吧" />
 				<text>0/200</text>
+				<button class="btn_sure" type="primary">确认</button>
 			</view>
 			<view class="comments_list">
 				<view class="list" v-for="item in comment" :key="item.id">
@@ -116,6 +117,8 @@
 				.comment{
 					padding: 5px;
 					position: relative;
+					border-bottom: 1px solid #b5b5b5;
+					padding-bottom: 55px;
 					textarea{
 						width: 100%;
 						border: 1px solid #b5b5b5;
@@ -125,10 +128,19 @@
 					}
 					text{
 						position: absolute;
-						bottom:	10px;
+						bottom:	65px;
 						right: 15px;
 						font-size: 12px;
 						color: #b5b5b5;
+					}
+					.btn_sure{
+						position: relative;
+						bottom: -15px;
+						right: 15px;
+						width: 120px;
+						height: 50px;
+						font-size:14px ;
+						line-height: 50px;
 					}
 				}
 				.comments_list{

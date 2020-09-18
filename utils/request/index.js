@@ -49,8 +49,8 @@ const http = new Request()
 
 http.setConfig((config) => { /* 设置全局配置 */
 
-	config.baseUrl = 'http://47.107.42.209:9998/' /* 根域名不同 */
-	//config.baseUrl = 'http://localhost/' /* 根域名不同 */
+	//config.baseUrl = 'http://47.107.42.209:9998/' /* 根域名不同 */
+	config.baseUrl = 'http://localhost:8290/' /* 根域名不同 */
 	//config.baseUrl = 'http://kpi.lightwit.cn:9090/' /* 根域名不同 正式*/
 	config.header = {
 		...config.header,

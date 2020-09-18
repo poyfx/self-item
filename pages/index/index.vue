@@ -1,5 +1,5 @@
 <template>
-	<view class="" style="padding-bottom: 49px;">
+	<view class="index" style="padding-bottom: 49px;">
 		<my-header :cheackeds="0"></my-header>
 		<view class="contents bgcf">
 
@@ -72,11 +72,26 @@
 							个人信息
 						</view>
 						<view class="userinfo flex">
-							<text>姓名：皮宇轩</text>
-							<text>职业：web前端开发</text>
-							<text>籍贯：湖南</text>
-							<text>email:1035576231@qq.com</text>
-							<text>爱好:运动相关的所有活动、打游戏</text>
+							<view class="">
+								<text>姓名：</text>
+								<view>皮宇轩</view>
+							</view>
+							<view><text>职业：</text>
+								<view>web前端开发</view>
+							</view>
+							<view><text>籍贯：</text>
+								<view>湖南</view>
+							</view>
+							<view><text>email：</text>
+								<view>1035576231@qq.com</view>
+							</view>
+							<view> <text>爱好：</text>
+								<view>运动相关的所有活动、打游戏</view>
+							</view>
+
+
+
+
 						</view>
 					</view>
 
@@ -84,23 +99,18 @@
 
 				<!-- 我的生活 -->
 				<view class="history flex">
-					
-					<view class="hobby flex">
-							<text>2014.9至2016.9</text>
-							<text>2017.5至 至今</text>
-							<text>2019.3 至 至今</text>
-							<text>2020.1.20至2020.3.10</text>
-					</view>
-					<view class="life">
-						<uni-calendar></uni-calendar>
-					</view>
+
+
+
 				</view>
 			</view>
 
 		</view>
 
 
-
+		<view class="life">
+			<uni-calendar></uni-calendar>
+		</view>
 		<!-- 底部 -->
 		<my-foot></my-foot>
 	</view>
@@ -132,15 +142,17 @@
 			// 		console.log(res)
 			// 	});
 			uniCloud.callFunction({
-			    name: 'poyfx',
-			    data: { a: 1 },
-			    success:res=>{
+				name: 'poyfx',
+				data: {
+					a: 1
+				},
+				success: res => {
 					console.log(res)
 				},
-			    fail(){},
-			    complete(){}
+				fail() {},
+				complete() {}
 			});
-			
+
 
 		},
 		methods: {
@@ -151,9 +163,14 @@
 </script>
 
 <style lang="scss">
+	.index {
+		height: 100vh;
+	}
+
 	@media screen and(min-width : 750px) {
 		.contents {
 			background-color: $text-content-bg;
+			min-height: 95%;
 
 			.bodys {
 				width: 100%;
@@ -189,8 +206,10 @@
 
 				.content {
 					width: 100%;
-					margin-top: 15px;
+					margin: 15px 0;
 					padding: 10px;
+					background-color: #fff;
+					font-size: 16px;
 
 					.items {
 						width: 25%;
@@ -238,10 +257,17 @@
 							padding: 15px;
 							font-size: 14px;
 							flex-direction: column;
-
-							text {
-								margin-bottom: 3px;
+							
+							view{
+								align-items: center;
+								display: flex;
+								text {
+									min-width: 60px;
+									margin-bottom: 3px;
+								}
 							}
+							
+							
 						}
 					}
 
@@ -251,10 +277,7 @@
 					width: 100%;
 					min-height: 300px;
 
-					.life {
-						width: 30%;
-						margin:0 15px;
-					}
+
 
 					.hobby {
 						width: 60%;
@@ -267,6 +290,14 @@
 				}
 			}
 
+		}
+
+		.life {
+			position: absolute;
+			top: 45px;
+			left: 1000px;
+			width: 30%;
+			margin: 0 15px;
 		}
 
 	}
